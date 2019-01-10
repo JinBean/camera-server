@@ -1,0 +1,99 @@
+<html>
+{% load static %}
+<head>
+<meta>
+<title>Zycron Admin Page</title>
+<link rel="shortcut icon" type="image/png" href="{% static 'images/raindrop.png' %}"/>
+</head>
+
+<style>
+    #logo{
+        position: absolute;
+        left: -120px;
+        height: 90px;
+    }
+    #navigation{
+
+    }
+</style>
+
+
+		<div id="header">
+
+			<img id="logo" src="{% static 'images/zycronlogo.png' %}" />
+
+		</div>
+
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div id="main">
+
+		<div id="navigation">
+
+
+
+
+			<hr />
+
+			<a href="#" class="navigation" style="padding:10px">Home</a>
+            <a href="#" class="navigation" style="padding:10px">About Us</a>
+            <a href="#" class="navigation" style="padding:10px">News</a>
+            <a href="{% url 'logout' %}" style="padding:10px">Logout</a>
+
+		</div>
+
+<br><br>
+
+		<div id="content">
+
+			<h1>Welcome</h1>
+
+
+    <p> <a href="#">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+      ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum. </p>
+
+            <br>
+            <br>
+            <h1>Camera Locations</h1>
+
+
+            <p><a href="{% url 'location1' %}" class="navigation">First Place</a></p>
+            <p><a href="{% url 'location2' %}" class="navigation">Second Place</a></p>
+            <p><a href="#" class="navigation">Third Place</a></p>
+            <p><a href="#" class="navigation">Fourth Place</a></p>
+
+
+
+		</div>
+
+
+        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+		<div id="footer">
+
+			<hr />
+
+	Copyright ZYCRON 2005 | All Rights Reserved
+
+		</div>
+
+
+
+</div>
+
+</body>
+
+</html>

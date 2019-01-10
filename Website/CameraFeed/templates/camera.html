@@ -1,0 +1,173 @@
+<html>
+{% load static %}
+    <head>
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/raindrop.png' %}"/>
+        {% block title %}
+        {% endblock %}
+    </head>
+
+
+    <style>
+
+        @font-face {
+        font-family: 'vcr';
+        src: url('{% static 'fonts/VCR_OSD_MONO_1.001.ttf' %}') format("truetype"),
+             local('vcr');
+         }
+        html, body {
+            background-color: white;
+            height: 80%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        #id{
+            display: inline-block;
+        }
+        .container{
+            position: relative;
+        }
+        #time{
+            background-color: rgba(0,0,0,0.5);
+            width: 110px;
+            color: #f2f2f2;
+            position: absolute;
+            left: 520px;
+            top: 4%;
+            text-align: center;
+            font-size: 22px;
+            font-family: 'vcr';
+        }
+        #location{
+            background-color: rgba(0,0,0,0.5);
+            width: 170px;
+            color: #f2f2f2;
+            position: absolute;
+            left: 20px;
+            top: 4%;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'vcr';
+        }
+        #date{
+            background-color: rgba(0,0,0,0.5);
+            width: 114px;
+            color: #f2f2f2;
+            position: absolute;
+            left: 20px;
+            top: 9%;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'vcr';
+        }
+        </style>
+
+    <body>
+        <div class="container">
+        <img id="logo" src="{% static 'images/glimpsegif.gif' %}" height=480px />
+        <div id="time"><span id="hour"></span>:<span id="min"></span>:<span id="sec"></span></div>
+
+        {% block video %}
+        {% endblock %}
+
+        <div id="date"></div>
+        </div>
+
+
+
+    </body>
+
+
+    <script>
+        var current = new Date()
+        var date = document.getElementById("date");
+        var secele = document.getElementById("sec");
+        var minele = document.getElementById("min");
+        var hourele = document.getElementById("hour");
+        var img = document.getElementById("logo");
+
+        var inithours = current.getHours();
+        inithours = ("0" + inithours).slice(-2);
+
+        var initminutes = current.getMinutes();
+        initminutes = ("0" + initminutes).slice(-2);
+
+        var initseconds = current.getSeconds();
+        initseconds -= initseconds%5;
+
+        if (initseconds==0 || initseconds==30){
+            img.src = "{% static 'images/first.jpg' %}"
+        } else if(initseconds==5 || initseconds==25 || initseconds==35 || initseconds==55){
+            img.src = "{% static 'images/second.jpg' %}"
+        } else if(initseconds==10 || initseconds==20 || initseconds==40 || initseconds==50){
+            img.src = "{% static 'images/third.jpg' %}"
+        } else if(initseconds==15 || initseconds==45){
+            img.src = "{% static 'images/fourth.jpg' %}"
+        }
+
+        var interval = setInterval(function() {
+           var current2 = new Date()
+           var seconds = current2.getSeconds();
+           seconds = ("0" + seconds).slice(-2);
+           var minutes = current2.getMinutes();
+           minutes = ("0" + minutes).slice(-2);
+           var hours = current2.getHours();
+           hours = ("0" + hours).slice(-2);
+
+
+           if (seconds==0 || seconds==30){
+            secele.innerHTML = seconds;
+            minele.innerHTML = minutes;
+            hourele.innerHTML = hours;
+            img.src = "{% static 'images/first.jpg' %}"
+           } else if(seconds==5 || seconds==25 || seconds==35 || seconds==55){
+            secele.innerHTML = seconds;
+            minele.innerHTML = minutes;
+            hourele.innerHTML = hours;
+            img.src = "{% static 'images/second.jpg' %}"
+           } else if(seconds==10 || seconds==20 || seconds==40 || seconds==50){
+            secele.innerHTML = seconds;
+            minele.innerHTML = minutes;
+            hourele.innerHTML = hours;
+            img.src = "{% static 'images/third.jpg' %}"
+           } else if(seconds==15 || seconds==45){
+            secele.innerHTML = seconds;
+            minele.innerHTML = minutes;
+            hourele.innerHTML = hours;
+            img.src = "{% static 'images/fourth.jpg' %}"
+            }
+        }, 1000);
+
+        initseconds = ("0" + initseconds).slice(-2);
+        secele.innerHTML = initseconds;
+        minele.innerHTML = initminutes;
+        hourele.innerHTML = inithours;
+
+        var dd = current.getDate();
+        var mm = current.getMonth()+1; //January is 0
+        var yyyy = current.getFullYear();
+
+        if(dd<10) {
+            dd = '0'+dd;
+        }
+        if(mm<10) {
+            mm = '0'+mm;
+        }
+        today = dd + '/' + mm + '/' + yyyy;
+        date.innerHTML = today;
+
+
+    </script>
+
+</html>
+
+
+

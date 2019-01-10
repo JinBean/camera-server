@@ -1,0 +1,76 @@
+<html>
+{% load static %}
+    <head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/raindrop.png' %}"/>
+        <title>
+            CameraFeed Login
+        </title>
+    </head>
+    <div id ="bar">
+        <img id="logo" src="{% static 'images/zycronlogo.png' %}" />
+    </div>
+<style>
+    html, body {
+    background-color: #d6f9dd;
+    height: 85%;
+    padding-right: 250px;
+    background-image: url({% static 'images/merlion.jpg' %});
+    background-size: auto 100%;
+    }
+
+    html {
+        display: table;
+        margin: auto;
+    }
+
+    body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .boxed {
+        border: 2px solid black ;
+        padding: 10px;
+        padding-right: 30px;
+        padding-left: 30px;
+        background:#fff
+    }
+    #bar{
+        background: #F0FF33;
+        position:absolute;
+        left: 0;
+        right: 0;
+        top: 0px;
+        padding:15px;
+        height:60px;
+        background-size:100%;
+    }
+
+    #logo{
+        position:absolute;
+        top:0px;
+        left:-90px;
+        height: 90px;
+     }
+
+
+</style>
+    <body>
+    <div class="boxed">
+        <h1>Login Page</h1>
+        <br>
+        <p>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% if error %}
+                {{ error }}
+                {% endif %}
+                {{ form.as_p }}
+
+                <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+                <input type="submit" name="submit" value="Log in"/>
+            </form>
+        </p>
+        </div>
+    </body>
+</html>

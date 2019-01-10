@@ -1,0 +1,57 @@
+{% extends 'camera.html' %}
+
+
+{% block title %}
+<style>
+    #id{
+        display: inline-block;
+    }
+</style>
+
+
+<title>
+    Location1
+</title>
+ {% endblock %}
+
+
+    {% load static %}
+ {% block video %}
+    <img id="logo" src="{% static 'images/glimpsegif.gif' %}" height=200px />
+    <p div=para><span id="min"></span>:<span id="sec"></h6></span>
+
+<script>
+var seconds = "{{seconds}}";
+seconds = ("0" + seconds).slice(-2);
+var minutes = "{{minutes}}";
+minutes = ("0" + minutes).slice(-2);
+var secele = document.getElementById("sec");
+var minele = document.getElementById("min");
+var convert = 0;
+
+var interval = setInterval(function() {
+   if (convert==1){
+    minutes = parseInt(minutes) + 1;
+    minutes = ("0" + minutes).slice(-2);
+    minele.innerHTML = minutes;
+    convert = 0;
+  }
+  seconds = parseInt(seconds) + 1;
+  seconds = ("0" + seconds).slice(-2);
+  secele.innerHTML = seconds;
+  if (seconds > 59) {
+    convert = 1;
+    seconds = 0;
+  }
+}, 1000);
+
+secele.innerHTML = seconds;
+minele.innerHTML = minutes;
+
+</script>
+
+ {% endblock %}
+
+
+
+
