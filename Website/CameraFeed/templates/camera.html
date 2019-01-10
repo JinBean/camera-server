@@ -87,6 +87,10 @@
 
 
     <script>
+
+    {% block names %}
+    {% endblock %}
+
         var current = new Date()
         var date = document.getElementById("date");
         var secele = document.getElementById("sec");
@@ -104,13 +108,13 @@
         initseconds -= initseconds%5;
 
         if (initseconds==0 || initseconds==30){
-            img.src = "{% static 'images/first.jpg' %}"
+            img.src = first;
         } else if(initseconds==5 || initseconds==25 || initseconds==35 || initseconds==55){
-            img.src = "{% static 'images/second.jpg' %}"
+            img.src = second;
         } else if(initseconds==10 || initseconds==20 || initseconds==40 || initseconds==50){
-            img.src = "{% static 'images/third.jpg' %}"
+            img.src = third;
         } else if(initseconds==15 || initseconds==45){
-            img.src = "{% static 'images/fourth.jpg' %}"
+            img.src = fourth;
         }
 
         var interval = setInterval(function() {
@@ -127,22 +131,22 @@
             secele.innerHTML = seconds;
             minele.innerHTML = minutes;
             hourele.innerHTML = hours;
-            img.src = "{% static 'images/first.jpg' %}"
+            img.src = first;
            } else if(seconds==5 || seconds==25 || seconds==35 || seconds==55){
             secele.innerHTML = seconds;
             minele.innerHTML = minutes;
             hourele.innerHTML = hours;
-            img.src = "{% static 'images/second.jpg' %}"
+            img.src = second;
            } else if(seconds==10 || seconds==20 || seconds==40 || seconds==50){
             secele.innerHTML = seconds;
             minele.innerHTML = minutes;
             hourele.innerHTML = hours;
-            img.src = "{% static 'images/third.jpg' %}"
+            img.src = third;
            } else if(seconds==15 || seconds==45){
             secele.innerHTML = seconds;
             minele.innerHTML = minutes;
             hourele.innerHTML = hours;
-            img.src = "{% static 'images/fourth.jpg' %}"
+            img.src = fourth;
             }
         }, 1000);
 
